@@ -1,0 +1,32 @@
+name: SBI
+description: Sprint backlog itemの作成
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **SBI とは**: 作業担当者が「何をもって終わりか」を判断できる作業単位。
+
+        **タイトルの命名ルール**: このSBIで何ができるようになるかが分かるタイトルにする。
+
+  - type: textarea
+    attributes:
+      label: 完了条件
+      description: この SBI が終わった時にどういう状態になって入れてばよいか、検証可能な条件をチェックボックスで記載する
+      value: |
+        - [ ]
+
+  - type: textarea
+    attributes:
+      label: 実装ヒント
+      description: 注意点、既存コードのリンク等。
+
+  - type: textarea
+    attributes:
+      label: やらないこと
+      description: このSBIのスコープ外で、他のSBIで扱うもの
+
+  - type: textarea
+    attributes:
+      label: 参考情報
+      description: SBI を進めるに当たって参考になる情報を記載(全体設計、DB設計、Figma リンク等)。

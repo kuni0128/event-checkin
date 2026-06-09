@@ -1,0 +1,28 @@
+name: PBI
+description: Product backlog itemの作成
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **注意**: 仕様は PRD に集約し、PBI には持たない。
+
+  - type: textarea
+    attributes:
+      label: 未確定事項
+      description: 実装着手時点で未定のこと
+      placeholder: |
+        （「〇〇の文言は実装時に詰める必要がある」、「〇〇のデザインは固まってないので、実装後にデザイナー確認」等）
+
+  - type: textarea
+    attributes:
+      label: 参考情報
+      description: PBI を進めるに当たって参考となる情報
+
+  - type: textarea
+    attributes:
+      label: PBI をクローズ時のチェックリスト
+      value: |
+        - [ ] PRD・ユビキタス言語の更新
+        - [ ] リリースノートの作成
+        - [ ] (必要なら)metabase の更新
