@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        **注意**: 仕様は PRD に集約し、PBI には持たない。
+        **注意**: 仕様は PRD または 設計書 に集約し、PBI には持たない。
 
   - type: textarea
     attributes:
@@ -25,4 +25,3 @@ body:
       value: |
         - [ ] PRD・ユビキタス言語の更新
         - [ ] リリースノートの作成
-        - [ ] (必要なら)metabase の更新

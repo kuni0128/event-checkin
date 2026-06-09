@@ -29,6 +29,6 @@ body:
       label: 再現可能なアカウント
       description: 再現したアカウント情報（環境、ID、PWなど）を書く（機密情報の取り扱いに注意）
       placeholder: |
-        - 環境: stg-lemon
+        - 環境: test
         - ID:
         - PW:
