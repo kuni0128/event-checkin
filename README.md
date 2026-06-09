@@ -25,7 +25,7 @@ npm install
 
 # 2. 環境変数を用意
 cp .env.example .env
-# .env に Supabase の URL / anon key を設定（取得手順は docs/setup.md）
+# .env に Supabase の URL / publishable key を設定（取得手順は docs/setup.md）
 
 # 3. 開発サーバー起動
 npm run dev
@@ -51,7 +51,7 @@ npm run dev
 src/
   components/ui/   # shadcn/ui コンポーネント
   lib/
-    supabase.ts    # Supabase クライアント（anon key のみ）
+    supabase.ts    # Supabase クライアント（publishable key のみ）
     utils.ts       # cn() ヘルパ
   App.tsx          # ルーティング（PBI #1 はランディングのみ）
   main.tsx

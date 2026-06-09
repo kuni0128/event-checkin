@@ -13,15 +13,15 @@ Slack App (OAuth クライアント)
         │  client id / secret, redirect URL
         ▼
 Supabase Auth (Slack プロバイダ)  ──  Postgres + RLS / Realtime
-        │  project URL / anon key
+        │  project URL / publishable key
         ▼
 React SPA (Vite)  ──  Lovable ホスティング (preview / production) + GitHub 同期
 ```
 
 シークレットの置き場所（設計書 §8）:
 
-- **フロント (`.env`)**: 公開可能な `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` のみ。
-- **Supabase 側**: Slack client secret などの機密値。フロントには絶対に置かない。
+- **フロント (`.env`)**: 公開可能な `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` のみ。
+- **Supabase 側**: secret key・Slack client secret などの機密値。フロントには絶対に置かない。
 
 ---
 
@@ -30,8 +30,10 @@ React SPA (Vite)  ──  Lovable ホスティング (preview / production) + Gi
 1. https://supabase.com でプロジェクトを作成（MVP は 1 プロジェクト。必要に応じ dev/prod 分離 — 設計書 §8）。
 2. リージョン・DB パスワードを設定。
 3. **Project Settings > Data API** で `Project URL` を取得 → `.env` の `VITE_SUPABASE_URL`。
-4. **Project Settings > API Keys** で `anon` `public` キーを取得 → `.env` の `VITE_SUPABASE_ANON_KEY`。
-5. `service_role` キーはフロントで使わない。サーバー処理（将来の Edge Functions 等）専用。
+4. **Project Settings > API Keys** で **Publishable key**（`sb_publishable_...`）を取得 → `.env` の `VITE_SUPABASE_PUBLISHABLE_KEY`。
+   - レガシーの `anon` key でも動作するが、ダッシュボードの推奨どおり publishable key を使う。どちらもブラウザ公開前提のキー。
+   - 安全性は RLS（PBI #2 で設定）が担保する。RLS 未設定のうちは開発用途に留める。
+5. **Secret key**（`sb_secret_...` / レガシーの `service_role`）はフロントで使わない。サーバー処理（将来の Edge Functions 等）専用。
 
 > テーブル・RLS・精算ビュー・Realtime publication は PBI #2（DB マイグレーション）で構築する。本 PBI ではプロジェクトの存在と接続情報の取得まで。
 
@@ -76,13 +78,13 @@ React SPA (Vite)  ──  Lovable ホスティング (preview / production) + Gi
 
 1. Lovable プロジェクトを作成し、この GitHub リポジトリ（`kuni0128/event-checkin`）と同期する。
 2. preview / production の配信は Lovable のホスティングを使う。コード履歴は GitHub 同期で保持（設計書 §8）。
-3. Lovable のビルド環境変数に `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` を設定する。
+3. Lovable のビルド環境変数に `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` を設定する。
 
 ---
 
 ## チェックリスト
 
-- [ ] Supabase プロジェクト作成・接続情報（URL / anon key）取得
+- [ ] Supabase プロジェクト作成・接続情報（URL / publishable key）取得
 - [ ] Slack App 作成（作成先ワークスペース確定）・OIDC scope 設定
 - [ ] Supabase Auth に Slack プロバイダ設定・Callback URL を Slack に登録
 - [ ] preview / production ドメイン確定後、双方に OAuth リダイレクト URL 登録
