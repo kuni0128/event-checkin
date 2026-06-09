@@ -1,0 +1,22 @@
+name: Design SBI
+description: Design sprint backlog itemの作成
+labels:
+  - design
+
+body:
+  - type: textarea
+    attributes:
+      label: 完了条件
+      description: このissueをDoneにして良い条件
+      value: |
+        - UI/UXについて開発チームで合意
+
+  - type: textarea
+    attributes:
+      label: 対応内容
+      description: このissueで取り組むことをできるだけ具体的に書く
+
+  - type: textarea
+    attributes:
+      label: やらないこと
+      description: 明記した方が良い「やらないこと」があれば記述し、認識齟齬を防ぐ

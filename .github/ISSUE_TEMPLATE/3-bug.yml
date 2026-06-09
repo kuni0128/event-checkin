@@ -1,0 +1,34 @@
+name: バグ報告
+description: 発見したバグを、再現方法・発生バージョンなどを記載してissue化する
+type: Bug
+
+body:
+  - type: textarea
+    attributes:
+      label: 概要
+      description: どのような不具合かを簡潔に書く
+
+  - type: textarea
+    attributes:
+      label: 再現方法
+      description: どのような手順でバグを再現できるか書く
+
+  - type: textarea
+    attributes:
+      label: 期待値
+      description: 本来どのような挙動になっているべきか書く
+
+  - type: input
+    attributes:
+      label: 発生ブランチ
+      description: ローカルで確認した場合はブランチ名を書く
+      placeholder: x.y.z(n) もしくは feature/foo-bar
+
+  - type: textarea
+    attributes:
+      label: 再現可能なアカウント
+      description: 再現したアカウント情報（環境、ID、PWなど）を書く（機密情報の取り扱いに注意）
+      placeholder: |
+        - 環境: test
+        - ID:
+        - PW:
